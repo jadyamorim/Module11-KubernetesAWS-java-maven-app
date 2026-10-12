@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                    echo 'deploying docker image...'
-                   withKubeConfig([credentialsId: 'lke-credentials', serverUrl: 'https://db9d2d47-429a-4c12-ac25-8bcf79b0aecf.eu-central-2.linodelke.net']) {
+                   withKubeConfig([credentialsId: 'lke-credentials', serverUrl: 'https://54e0545a-87db-4b39-9047-bdbab3fb2813.us-sea-2-gw.linodelke.net']) {
                         sh 'kubectl create deployment nginx-deployment --image=nginx'
                    }
                 }
