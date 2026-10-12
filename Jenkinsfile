@@ -21,14 +21,17 @@ pipeline {
             environment {
                 AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_access_key')
+                AWS_DEFAULT_REGION = 'ca-west-1'
             }
             steps {
                 script {
                    echo 'deploying docker image...'
                    sh '''
-                        echo "KUBECONFIG=${KUBECONFIG:-not-set}"
-                        kubectl config current-context
-                        kubectl config view --minify
+                        aws eks update-kubeconfig \
+                        --region ca-west-1 \
+                        --name demo-cluster
+                
+                        kubectl get nodes
                    '''
                    sh 'kubectl create deployment nginx-deployment --image=nginx'
                 }
