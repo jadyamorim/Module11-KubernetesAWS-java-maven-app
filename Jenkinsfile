@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
         [$class: 'GitSCMSource',
-        remote: 'https://gitlab.com/twn-devops-bootcamp/latest/08-jenkins/jenkins-shared-library.git',
+        remote: 'https://github.com/jadyamorim/Module8-jenkins-shared-library.git',
         credentialsId: 'gitlab-credentials'])
 
 def gv
@@ -31,9 +31,9 @@ pipeline {
         stage("build and push image") {
             steps {
                 script {
-                    buildImage 'nanatwn/demo-app:jma-3.0'
+                    buildImage 'jadyamorim/jadydevops:jma-3.0'
                     dockerLogin()
-                    dockerPush 'nanatwn/demo-app:jma-3.0'
+                    dockerPush 'jadyamorim/jadydevops:jma-3.0'
                 }
             }
         }
