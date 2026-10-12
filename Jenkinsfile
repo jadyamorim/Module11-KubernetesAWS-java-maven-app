@@ -2,7 +2,7 @@
 library identifier: 'jenkins-shared-library@main', retriever: modernSCM(
         [$class: 'GitSCMSource',
         remote: 'https://github.com/jadyamorim/Module8-jenkins-shared-library.git',
-        credentialsId: 'gitlab-credentials'])
+        credentialsId: 'github-credentials'])
 
 def gv
 
