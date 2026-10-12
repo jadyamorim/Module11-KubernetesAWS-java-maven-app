@@ -25,6 +25,11 @@ pipeline {
             steps {
                 script {
                    echo 'deploying docker image...'
+                   sh '''
+                        echo "KUBECONFIG=${KUBECONFIG:-not-set}"
+                        kubectl config current-context
+                        kubectl config view --minify
+                   '''
                    sh 'kubectl create deployment nginx-deployment --image=nginx'
                 }
             }
